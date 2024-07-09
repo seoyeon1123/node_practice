@@ -3,21 +3,25 @@
 {% block content %}
 <h1>메인 페이지</h1>
 {% if list %}
-<table class="table">
-  <tr>
-    <th>글 제목</th>
-    <th>글 내용</th>
-    <th>작성 날짜</th>
-  </tr>
-  {% for writing in list %}
-  <tr>
-    <td><a href="/detail/{{writing._id}}">{{ writing.title }}</a></td>
-    <td>{{ writing.contents }}</td>
-    <td>{{ writing.date }}</td>
-  </tr>
-  {% endfor %}
+<table class="table table-bordered text-center">
+  <thead class="thead-dark"> <!-- 테이블 헤더 배경색 설정 -->
+    <tr>
+      <th>글 제목</th>
+      <th>글 내용</th>
+      <th>작성 날짜</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {% for writing in list %}
+    <tr>
+      <td><a href="/detail/{{ writing._id }}" class="btn">{{ writing.title }}</a></td>
+      <td>{{ writing.contents }}</td>
+      <td>{{ writing.date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 {% else %}
-<p> 작성된 글이 없습니다.</p>
+<p>작성된 글이 없습니다.</p>
 {% endif %}
 {% endblock %}
